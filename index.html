@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Test task</title>
+</head>
+<body>
+    <div class="preloader" id="preloader">
+        <div class="load__elem"></div>
+     </div>
+
+    <div id="popup" class="popup">
+        <button onclick="closeForm()">X</button>
+        <p>Registration was successful!</p>
+    </div> 
+
+    <header class="header">
+        <div class="container">
+            <div class="header-logo">
+                <img src="img/nav-img/logo.png" alt="Логотип">
+                <nav class="header-nav">
+                    <a href="#">Games</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">About</a> 
+                </nav>
+            </div>
+            <div class="header-authorization">
+                    <button class="button1">Sign up</button>
+                    <button class="button2">Log in</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="authorization">
+        <div class="container">
+            <article class="authorization-title">
+                <h1>awesome html5 games - NO MONEY!</h1>
+                <h2>Your perfect place to get some fun and excitement</h2>
+            </article>
+            <article class="authorization-button">
+                <button class="button1">Log in</button>
+                <button class="button2">Play</button>
+            </article>
+            <article class="authorization-account">
+                <div class="authorization-account__title">
+                    <p class="p">Create a free account now</p>
+                    <ul>
+                        <li>
+                            <img src="img/authorization-img/AboutUs_Dice_1.png" alt="Кубики">
+                            <p class="p1">1000+ Games available</p>
+                        </li>
+                        <li>
+                            <img src="img/authorization-img/AboutUs_Dice_2.png" alt="Автомат">
+                            <p class="p2">New game Every week</p>
+                        </li>
+                        <li>
+                            <img src="img/authorization-img/AboutUs_Dice_3.png" alt="Время">
+                            <p class="p3">Support our users 24/7</p>
+                        </li>
+                    </ul>
+                </div>
+                <form class="authorization-account__form" action="#">
+                    <input class="input1" type="text" placeholder="Firstname">
+                    <input class="input1" type="text" placeholder="Lastname">
+                    <input class="input2" type="email" placeholder="Email address">
+                    <button onclick="openForm()">Join now</button>
+                </form>
+                <form class="authorization-account__approval" action="#">
+                    <input type="checkbox">
+                    <p>I accept the Privacy Policy</p>
+                </form>
+            </article>        
+        </div>
+    </section>
+
+    <section class="games">
+        <div class="container">
+            <article class="game-title">
+                <h3>Our Games</h3>
+                <div>
+                    <p>Get Virtual Welcome bonus after Sign Up</p>
+                    <a href="#">All games</a>
+                </div>
+            </article>
+            <ul class="games-drid">
+                <li class="games-drid1"> <!--1-->
+                    <img src="img/games-img/gametype1.jpg" alt="game">
+                    <a href="#">Double Jackpot</a>
+                    <p>NetentGames</p>
+                </li>
+                <li class="games-drid1"> <!--2-->
+                    <img src="img/games-img/gametype2.jpg" alt="game">
+                    <a href="#">All Aboard: Dynam...</a>
+                    <p>RushGameStudio</p>
+                </li>
+                <li class="games-drid1"> <!--3-->
+                    <img src="img/games-img/gametype3.jpg" alt="game">
+                    <a href="#">Book Of Tombs</a>
+                    <p>NetentGames</p>
+                </li>
+                <li class="games-drid2"> <!--4-->
+                    <img src="img/games-img/gametype4.png" alt="game">
+                    <h4>Dynamite Riches Megaways</h4>
+                    <p>Miners revealed a gain of €46,672 for Sandra M.! You too, dynamite the reels of the Red Tiger Daily Jackpot machines</p>
+                    <button>Play now</button>
+                </li>
+                <li class="games-drid2"> <!--5-->
+                    <img src="img/games-img/gametype5.png" alt="game">
+                    <h4>Gator Gold Deluxe Gigablox</h4>
+                    <p>These swamps conceal many dangers but especially precious treasures. Will you be able to find them?</p>
+                    <button>Play now</button>
+                </li>
+                <li class="games-drid1"> <!--6-->
+                    <img src="img/games-img/gametype6.jpg" alt="game">
+                    <a href="#">Rudolph’s Ride</a>
+                    <p>NetentGames</p>
+                </li>
+                <li class="games-drid1"> <!--7-->
+                    <img src="img/games-img/gametype7.jpg" alt="game">
+                    <a href="#">Starburst XXXtreme</a>
+                    <p>StarBurst Inc.</p>
+                </li>
+                <li class="games-drid1"> <!--8-->
+                    <img src="img/games-img/gametype8.jpg" alt="game">
+                    <a href="#">Black Diamond</a>
+                    <p>RushGameStudio</p>
+                </li>
+                <li class="games-drid3"> <!--9-->
+                    <img src="img/games-img/gametype9.png" alt="game">
+                    <ul>
+                        <li>
+                            <h4>Our deals are not to be missed</h4>
+                            <p>Discover a wide range of weekly promotions</p>
+                        </li>
+                        <li>
+                            <button>Read more</button> 
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <p>* We don't offer opportunities to play for real money. Our games are free demo. All games were invented for entertainment purposes only and do not offer real money prizes.</p>
+            <article class="game-contact">
+                <aside class="game-contact__form">
+                    <h5>Contact us</h5>
+                    <p>If you have some questions, send us a message</p>
+                    <form class="form1" action="#">
+                        <input type="text" placeholder="Firstname">
+                        <input type="email" placeholder="Email Address">
+                        <textarea placeholder="Your message here..."></textarea>
+                    </form>
+                    <form class="form2" action="#">
+                        <div>
+                            <input type="checkbox">
+                            <p>I accept the Privacy Policy</p>
+                        </div>
+                        <button>Send</button>
+                    </form>
+                </aside>
+                <aside class="game-contact__img">
+                    <img src="img/WagerBonus.png" alt="bonus">
+                </aside> 
+            </article>
+            
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <article class="footer-info">
+                <a href="#">Disclaimer</a>
+                <span>|</span>
+                <a href="#">Privacy Policy</a>
+                <span>|</span>
+                <a href="#">Terms of Conditions</a>
+            </article>
+            <p class="footer-text">This site does not provide any form of online gambling and delivers information for entertainment and research purposes only. The games listed by Topwinningslots are intended for adult audience entertainment (underage visitors are restricted) and do not offer real money or prizes. Practicing online free games does not imply future success at 'real money' gambling.</p>
+            <article class="footer-contacts">
+                <p>2022 | © Lorem Inc. All Rights Reserved</p>
+                <div>
+                    <a href="#">
+                        <img src="img/footer-img/fa-brands_twitter.png" alt="twitter">
+                    </a>
+                    <a href="#">
+                        <img src="img/footer-img/fa-brands_facebook-f.png" alt="facebook">
+                    </a>
+                    <a href="#">
+                        <img src="img/footer-img/fa6-brands_instagram.png" alt="instagram">
+                    </a>
+                </div>
+            </article>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+ 
+</body>
+</html>

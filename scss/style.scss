@@ -1,0 +1,755 @@
+@import "reset.scss";
+
+@font-face {
+    font-family: 'Proxima Nova Bold';
+    src: url("../font/ProximaNova-Bold.ttf");
+}
+
+@font-face {
+    font-family: 'Proxima Nova Light';
+    src: url("../font/ProximaNova-Light.ttf");
+}
+
+@font-face {
+    font-family: 'Proxima Nova Regular';
+    src: url("../font/ProximaNova-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Proxima Nova Semibold';
+    src: url("../font/ProximaNova-Semibold.ttf");
+}
+
+$fw300: 'Proxima Nova Light', sans-serif;
+$fw400: 'Proxima Nova Regular', sans-serif;
+$fw600: 'Proxima Nova Semibold', sans-serif;
+$fw700: 'Proxima Nova Bold', sans-serif;
+
+$bor: 2px solid red;
+$col: #FFF;
+
+
+
+@mixin font ($minf, $d, $ff, $c) {
+    font-size: calc(#{$minf} + #{$d} * (100vw / 1350));
+    @media (max-width: 767px) {
+        font-size: calc(#{$minf} + (#{$d} + #{$d} * 0.7) * ((100vw - 320px) / 1350));
+    }
+    font-family: $ff;
+    color: $c;
+}
+
+@mixin button1 ($w, $h) {
+    width: $w;
+    height: $h;
+    background-color: rgba(28,28,28,0);
+    @media (max-width: 425px) {
+        border-radius: 4px;
+    }
+}
+
+
+@mixin button2 ($w, $h) {
+    border-radius: 8px;
+    background: linear-gradient(265deg, #4870FF -5.06%, #FA00FF 94.87%);
+    box-shadow: 0px 4px 16px 0px rgba(138, 97, 255, 0.60);
+    width: $w;
+    height: $h;
+    @media (max-width: 425px) {
+        border-radius: 4px;
+    }
+}
+
+@mixin input ($w, $br, $mbr, $mb) {
+    width: $w;
+    border-radius: $br; /*8px;*/
+    background: #FFF;
+    padding: 1.5% 3%;
+    @include font(8px, 8, $fw400, #050D2A);
+    margin-right: $mb;
+    @media (max-width: 425px) {
+        border-radius: $mbr; /*4px;*/
+    }
+}
+
+@mixin img-game ($w, $h) {
+    img {
+        max-width: $w;
+        max-height: $h;
+        border-radius: 16px;
+    }
+}
+
+@mixin button-game ($w, $p1, $p2) {
+    border-radius: 12px;
+    background: #4870FF;
+    width: $w;
+    padding: $p1 $p2;
+    @include font(2px, 8, $fw600, $col);
+    &:hover {
+        @extend %hover;
+    }
+}
+
+%hover {
+    animation: pulse 2s infinite;
+    @keyframes pulse {
+        0%, 100% {transform: scale(1);}
+        50% {transform: scale(1.1);}
+    }
+}
+
+%ahover {
+    background: linear-gradient(265deg, #4870FF -5.06%, #FA00FF 94.87%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 2px solid #FA00FF;
+    border-image: linear-gradient(265deg, #4870FF -5.06%, #FA00FF 94.87%);
+    border-image-slice: 1;
+}
+
+* {
+    font-family: $fw400;
+    font-size: 20px;
+    .container {
+        max-width: 72.2%;
+        margin: 0 auto; 
+    }
+}
+
+.preloader {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+    transition: .5s;
+    z-index:99;
+    .load__elem {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 10px solid #fff;
+        border-bottom: 10px solid #000;
+        animation:  loader 1s infinite linear;
+    }
+    @keyframes loader {
+        from {
+        transform: rotate(0deg);
+        } to {
+        transform: rotate(360deg);
+        }
+    }
+}
+.hide {
+    opacity: 0;
+    visibility: hidden;
+}  
+
+.popup {
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 25%;
+    width: 50%;
+    height: 20%;
+    background-color: #3A4054;
+    border-radius: 15px;
+    padding: 0.5% 0.5%;
+    z-index: 1;
+    button {
+        width: 4%;
+        background: linear-gradient(265deg, #4870FF -5.06%, #FA00FF 94.87%);
+        box-shadow: 0px 4px 16px 0px rgba(138, 97, 255, 0.60);
+        border-radius: 50%;
+        @include font(6px, 6, $fw300, $col);
+        padding: 1% 1%;
+        margin-bottom: 2%;
+        margin-left: 95%;
+    }
+    p {
+        color: #fff;
+        text-align: center;
+        @include font(10px, 22, $fw700, $col);
+    }
+}
+
+.header {
+    background-image: url("../img/nav-img/Container.png");
+    padding: 0.8% 0;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        .header-logo {
+            display: flex;
+            width: 70%;
+            img {
+               margin-right: 6.2%;
+               width: 7%;
+            }
+            .header-nav {
+                display: flex;
+                align-items: center;
+                a {
+                    @include font(6px, 10, $fw700, $col);
+                    margin-right: 3rem;
+                    @media (max-width: 946px) {
+                        margin-right: 2rem; 
+                    }
+                    @media (max-width: 654px) {
+                        margin-right: 1rem; 
+                    }
+                    @media (max-width: 407px) {
+                        margin-right: 0.5rem; 
+                    }
+                    &:hover {
+                        @extend %ahover;
+                    }
+                }
+            }
+        }
+        .header-authorization {
+            display: flex;
+            align-items: center;
+            width: 20%;
+            @media (max-width: 537px) {
+                width: 25%;
+            }
+            @media (max-width: 320px) {
+                width: 30%;
+            }
+            .button1 {
+                @include button1(60%, 85%);
+                @include font(8px, 10, $fw700, $col);
+                &:hover {
+                    @extend %hover;
+                }
+                margin-right: 5%;
+                @media (max-width: 537px) {
+                    @include button1(80%, 85%);
+                }
+                @media (max-width: 320px) {
+                    @include button1(90%, 85%);
+                }
+            }
+            .button2 {
+                @include button2(60%, 85%);
+                @include font(8px, 10, $fw700, $col);
+                &:hover {
+                    @extend %hover;
+                }
+                @media (max-width: 537px) {
+                    @include button1(80%, 85%);
+                }
+                @media (max-width: 320px) {
+                    @include button1(90%, 85%);
+                }
+            }
+        }
+    }   
+}
+
+.authorization {
+    background-image: url("../img/notfound_bg.png");
+    background-position: center top;
+    background-size: 100%;
+    .container {
+        padding: 2% 6.1%;
+        .authorization-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h1 {
+                max-width: 70%;
+                @include font(14px, 32, $fw700, $col);
+                text-transform: uppercase; 
+                text-align: center;
+                line-height: normal;
+                margin-bottom: 2%;
+                @media (max-width: 450px) {
+                    max-width: 80%;
+                }
+            }
+            h2 {
+                max-width: 55%;
+                @include font(7px, 20, $fw400, $col);
+                text-align: center;
+                line-height: normal;
+                text-transform: capitalize;
+                margin-bottom: 24px;
+            }
+        }
+        .authorization-button {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 8%;
+            .button1 {
+                @include button1(23.3%, 44px);            
+                @include font(7px, 11, $fw700, $col);
+                padding: 1% 0;
+                border: 2px solid #FFF;
+                box-shadow: 0px 4px 16px 0px rgba(138, 97, 255, 0.60);
+                border-radius: 8px;
+                margin-right: 16px;
+                box-sizing: border-box;
+                &:hover {
+                    @extend %hover;
+                }
+                @media (max-width: 944px) {
+                    @include button1(23.3%, 34px);  
+                } 
+                @media (max-width: 654px) {
+                    @include button1(23.3%, 30px);  
+                }
+                @media (max-width: 425px) {
+                    @include button1(23.3%, 20px);  
+                }
+            }
+            .button2 {
+                @include button2(23.3%, 44px); 
+                @include font(7px, 11, $fw700, $col);
+                padding: 1% 0;
+                &:hover {
+                    @extend %hover;
+                }
+                @media (max-width: 944px) {
+                    @include button2(23.3%, 34px);  
+                }
+                @media (max-width: 654px) {
+                    @include button2(23.3%, 30px);  
+                }
+                @media (max-width: 425px) {
+                    @include button2(23.3%, 20px);  
+                }
+            }
+        }
+        .authorization-account {
+            border-radius: 16px;
+            border: 1px solid #3A4054;
+            background: linear-gradient(268deg, rgba(79, 89, 124, 0.40) 0%, rgba(123, 135, 175, 0.40) 50.52%, rgba(63, 72, 105, 0.40) 100%);
+            backdrop-filter: blur(5px);
+            padding: 1% 1.9%;
+            .authorization-account__title {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 1%;
+                @media (max-width: 1413px) {
+                    flex-direction: column;
+                }
+                .p {
+                    @include font(6px, 15, $fw700, $col);
+                    text-transform: uppercase;
+                    width: 41%;
+                    @media (max-width: 1413px) {
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+                ul {
+                    display: flex;
+                    li {
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                        @media (max-width: 1413px) {
+                            justify-content: center;
+                        }
+                        img {
+                            width: 25.75%;
+                            margin-right: 2.5%;
+                        }
+                        p {
+                            @include font(4px, 8, $fw600, $col);
+                            text-transform: capitalize;
+                            line-height: normal;
+                        }
+                        .p1 {
+                            width: 47%;
+                        }
+                        .p2 {
+                            width: 40%;
+                        }
+                        .p3 {
+                            width: 41%;
+                        }
+                    }
+                }
+            }
+            .authorization-account__form {
+                margin-bottom: 1.5%;
+                display: flex;
+                @media (max-width: 768px) {
+                     flex-direction: column;
+                     align-items: center;
+                    input {
+                        margin: 1.5% 0; 
+                    }   
+                }
+                .input1 {
+                    @include input(24.4%, 8px, 4px, 1%);
+                }
+                .input2 {
+                    @include input(26.55%, 8px, 4px, 1%);
+                }
+                button {
+                    @include button2(19.5%, 44px); 
+                    @include font(7px, 11, $fw700, $col);
+                    padding: 1% 0;
+                    &:hover {
+                        @extend %hover;
+                    }
+                    @media (max-width: 944px) {
+                        @include button2(19.5%, 34px);  
+                    }
+                    @media (max-width: 654px) {
+                        @include button2(19.5%, 30px);  
+                    }
+                    @media (max-width: 425px) {
+                        @include button2(19.5%, 20px);  
+                        border-radius: 5px;
+                    }
+                }
+            }
+            .authorization-account__approval {
+                display: flex;
+                align-items: center;
+                @media (max-width: 768px) {
+                    justify-content: center;  
+               }
+                input {
+                    margin-right: 1%;
+                    width: 3%;
+                }
+                p {
+                    @include font(5px, 9, $fw400, $col);
+                }
+            }
+        }
+        
+    }
+}
+
+.games {
+    background-image: url("../img/bg_contact.jpeg");
+    background-position: center top;
+    background-size: cover;
+    .container {
+        display: flex;
+        flex-direction: column;
+        .game-title {
+                margin: 3.3% 0;
+                h3 {
+                    @include font(14px, 22, $fw700, $col);
+                    line-height: normal;
+                    text-transform: capitalize;
+                    margin-bottom: 0.5%;
+                }
+                div {
+                    display: flex;
+                    justify-content: space-between;
+                    p {
+                        @include font(6px, 10, $fw400, $col);
+                    }
+                    a {
+                        @include font(6px, 10, $fw600, $col);
+                        border-bottom: 1px solid $col;
+                        &:hover {
+                            @extend %ahover;
+                        }
+                    }
+                }
+            }
+        .games-drid {
+            display: grid;
+            grid-template-columns: 15% 15% 15% 23.4% 23.4%;
+            grid-template-rows: repeat(2, 45%);
+            grid-template-areas: 
+            'game1 game2 game3 game4 game5'
+            'game6 game7 game8 game9 game9';
+            gap: 2%;
+            img {
+                margin-bottom: 8%;
+            }
+            a, h4 {
+                @include font(3px, 10, $fw700, $col);
+                margin-bottom: 1%;
+            }
+            a:hover {
+                color: #4870FF;
+            }
+            p {
+                @include font(3px, 9, $fw300, $col);
+                opacity: 0.5;
+                margin-bottom: 5%;
+            }
+            li {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 3%;
+            }
+            .games-drid1 {
+                img {
+                    border-radius: 16px;
+                    width: 103.5%;
+                    height: 74%;
+                    @media (max-width: 684px) {
+                        border-radius: 10px;
+                    }
+                    @media (max-width: 434px) {
+                        border-radius: 5px;
+                    }
+                }
+            }
+            .games-drid2 {
+                display: flex;
+                img {
+                    width: 101%;
+                    height: 105%;
+                }
+                h4 {
+                    width: 70%;
+                    position: absolute;
+                    top: 6%;
+                    left: 6%;
+                }
+                p {
+                    width: 65%;
+                    opacity: 1;
+                    position: absolute;
+                    top: 26%;
+                    left: 6%;
+                    @media (max-width: 879px) {
+                        width: 80%;
+                    }
+                }
+                button {
+                    @include button-game(27.6%, 2%, 2%);
+                    position: absolute;
+                    top: 73%;
+                    left: 6%;
+                } 
+            }
+            & li:first-child {
+                grid-area: game1;
+            }
+            & li:nth-child(2) {
+                grid-area: game2;
+            }
+            & li:nth-child(3) {
+                grid-area: game3;
+            }
+            & li:nth-child(4) {
+                grid-area: game4;
+                position: relative;
+            }
+            & li:nth-child(5) {
+                grid-area: game5;
+                position: relative;
+            }
+            & li:nth-child(6) {
+                grid-area: game6;
+            }
+            & li:nth-child(7) {
+                grid-area: game7;
+            }
+            & li:nth-child(8) {
+                grid-area: game8;
+            }
+            & li:nth-child(9) {
+                grid-area: game9;
+                img {
+                    margin-bottom: 2.2%;
+                }
+                ul {
+                    display: flex;
+                    justify-content: space-between;
+                    & li:first-child {
+                        width: 50%;
+                    }
+                    & li:last-child {
+                        width: 30%;
+                        display: flex;
+                        align-items: flex-end;
+                        button {
+                            @include button-game(53%, 3%, 2%);
+                        }
+                    }    
+                }        
+            }
+        }
+        p {
+            @include font(4px, 8, $fw400, $col);
+            width: 60%;
+        }
+        .game-contact {
+            display: flex;
+            margin-top: 5%;
+            position: relative;
+            .game-contact__form {
+                display: flex;
+                flex-direction: column;
+                width: 38.5%;
+                margin-bottom: 11%;
+                h5 {
+                    @include font(14px, 22, $fw700, $col);
+                    line-height: normal;
+                    text-transform: capitalize;
+                    margin-bottom: 0.5%;
+                    width: 100%;
+                }
+                p {
+                    @include font(6px, 10, $fw400, $col);
+                    margin-bottom: 3%;
+                    width: 100%;
+                }
+                .form1 {
+                    input {
+                        @include input(100%, 8px, 4px, 0);
+                        margin-bottom: 3%;
+                        height: 22.5%;
+                    }
+                    textarea {
+                        height: 79%;
+                        @include input(100%, 8px, 4px, 0);
+                        @media (max-width: 425px) {
+                            height: 59%;
+                        }
+                        @media (max-width: 320px) {
+                            height: 49%;
+                        }
+                    }
+                }
+                .form2 {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 20%;
+                    align-items: baseline;
+                    div {
+                        display: flex;
+                        align-items: baseline;
+                        width: 70%;
+                        @media (max-width: 320px) {
+                            width: 50%;
+                        }
+                        input {
+                            margin-right: 3%;
+                            width: 7%;
+                        }
+                        p {
+                            @include font(5px, 9, $fw400, $col);
+                        }
+                    }
+                    button {
+                        @include button2(30%, 100%);
+                        @include font(6px, 10, $fw700, $col);
+                        padding: 1% 0;
+                        &:hover {
+                            @extend %hover;
+                        }
+                    }
+                }
+            }
+            .game-contact__img {
+                position: absolute;
+                bottom: 0;
+                right: 2%;
+                @media (max-width: 1024px) {
+                    img {
+                        width: 75%;
+                    }
+                    right: -13%;
+                }
+                @media (max-width: 768px) {
+                    img {
+                        width: 60%;
+                    }
+                    right: -37%;
+                }
+                @media (max-width: 425px) {
+                    img {
+                        width: 35%;
+                    }
+                    right: -110%;
+                }
+                @media (max-width: 375px) {
+                    img {
+                        width: 30%;
+                    }
+                    right: -132%;
+                }
+                @media (max-width: 320px) {
+                    img {
+                        width: 25%;
+                    }
+                    right: -163%;
+                }
+            }
+        }
+        
+    }   
+}
+
+.footer {
+    background-color: rgba(1, 1, 31, 1);
+    padding: 2% 0;
+    .footer-info {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2%;
+        a {
+            @include font(8px, 10, $fw700, $col);
+            margin-right: 2%;
+            &:hover {
+                @extend %ahover;
+            }
+        }
+        span {
+            margin: 0 2.5% 0 1%;
+            @include font(8px, 10, $fw700, $col);
+        }
+    }
+    .footer-text {
+        @include font(6px, 8, $fw400, $col);
+        text-align: center;
+        padding-bottom: 3%;
+        border-bottom: 0.1px solid #706F6B;
+    }
+    .footer-contacts {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2%;
+        p {
+            @include font(6px, 8, $fw300, $col);
+        }
+        div {
+            display: flex;
+            justify-content: space-between;
+            width: 7%;
+            a:hover {
+                @extend %hover;
+            }
+            @media (max-width: 768px) {
+                img {
+                    width: 80%;
+                }
+                width: 9%;
+            }
+            @media (max-width: 768px) {
+                img {
+                    width: 70%;
+                }
+                width: 12%;
+            }
+        }   
+    }   
+}
+
+
